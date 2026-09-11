@@ -12,6 +12,7 @@
   }
 
   body {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,9 +22,36 @@
   }
 
   .logo {
-    width: min(320px, 70vw);
-    height: auto;
-    margin-bottom: 36px;
+    position: absolute;
+    top: 6vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(260px, 60vw);
+    aspect-ratio: 701 / 277;
+    -webkit-mask-image: url("images/vampire-editor-logo.png");
+    mask-image: url("images/vampire-editor-logo.png");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    background-color: #f2f2f2;
+    animation: logoBlink 6s steps(1, end) infinite;
+  }
+
+  @keyframes logoBlink {
+    0%   { background-color: #f2f2f2; }
+    25%  { background-color: #b23b30; }
+    50%  { background-color: #999999; }
+    75%  { background-color: #f2f2f2; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo {
+      animation: none;
+      background-color: #f2f2f2;
+    }
   }
 
   h1 {
@@ -67,7 +95,7 @@
 </style>
 </head>
 <body>
-  <img class="logo" src="images/vampire-editor-logo.png" alt="Vampire Editor">
+  <div class="logo" role="img" aria-label="Vampire Editor"></div>
   <h1>New Site Coming Soon</h1>
   <p>This might take time... I'm busy on projects</p>
 
